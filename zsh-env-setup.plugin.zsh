@@ -72,19 +72,23 @@ fi
 
 # fzf [[[1
 if (( ${+commands[fzf]} )); then
-  typeset -g FZF_COMPLETION_TRIGGER='\'
+    typeset -g FZF_COMPLETION_TRIGGER='\'
 
   # Use fd if available
   if (( ${+commands[fd]} )); then
-    typeset -g FZF_DEFAULT_COMMAND='fd --type f'
+      typeset -g FZF_DEFAULT_COMMAND='fd --type f'
 
-    function _fzf_compgen_path() {
-      fd --hidden --follow --exclude ".yarn" --exclude ".git" . "$1"
-    }
+      function _fzf_compgen_path() {
+          fd --hidden --follow \
+              --exclude ".yarn" --exclude ".git" \
+              . "$1"
+      }
 
-    function _fzf_compgen_dir() {
-      fd --type d --hidden --exclude ".yarn" --follow --exclude ".git" . "$1"
-    }
+      function _fzf_compgen_dir() {
+          fd --type d --hidden --follow \
+              --exclude ".yarn" --exclude ".git" \
+              . "$1"
+      }
   fi
 fi
 # ]]]1
