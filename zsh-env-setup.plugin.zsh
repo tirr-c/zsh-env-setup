@@ -31,11 +31,6 @@ zstyle ':completion:*' menu select
 HISTSIZE=10000
 SAVEHIST=10000
 
-# lscolors [[[1
-typeset -g TIME_STYLE='long-iso'
-zstyle ':completion:*:default' list-colors ''
-autoload -U colors && colors
-
 # zsh-substring-completion [[[1
 setopt complete_in_word
 setopt always_to_end
