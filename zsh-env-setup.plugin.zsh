@@ -18,6 +18,21 @@ if [[ ${zsh_loaded_plugins[-1]} != */zsh-env-setup && -z ${fpath[(r)${0:h}]} ]] 
 typeset -gA Plugins
 Plugins[ZSH_ENV_SETUP_DIR]="${0:h}"
 
+# Terminal title [[[1
+function .tirr-precmd() {
+  print -Pn "\e]0;[%n@%m %~]%#\a"
+}
+
+function .tirr-preexec() {
+  print -Pn "\e]0;[%n@%m %~]%# "
+  echo -n $2
+  echo -ne "\a"
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd .tirr-precmd
+add-zsh-hook preexec .tirr-preexec
+
 # zsh-sensible [[[1
 alias mv='mv -i'
 alias cp='cp -i'
