@@ -71,11 +71,11 @@ else
 fi
 
 if (( ${+commands[nvim]} )); then
-    typeset -g EDITOR=nvim
+    typeset -gx EDITOR=nvim
     alias vim='nvim'
     alias vi='nvim'
 elif (( ${+commands[vim]} )); then
-    typeset -g EDITOR=vim
+    typeset -gx EDITOR=vim
     alias vi='vim'
 fi
 # ]]]1
