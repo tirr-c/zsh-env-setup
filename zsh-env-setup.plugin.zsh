@@ -86,16 +86,17 @@ if (( ${+commands[fzf]} )); then
 
   # Use fd if available
   if (( ${+commands[fd]} )); then
-      export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude ".git"'
+      export FZF_DEFAULT_COMMAND='fd --color=always --type f --hidden --follow --exclude ".git"'
+      export FZF_DEFAULT_OPTS='--ansi'
 
       function _fzf_compgen_path() {
-          fd --hidden --follow \
+          fd --color=always --hidden --follow \
               --exclude ".git" \
               . "$1"
       }
 
       function _fzf_compgen_dir() {
-          fd --type d --hidden --follow \
+          fd --color=always --type d --hidden --follow \
               --exclude ".git" \
               . "$1"
       }
