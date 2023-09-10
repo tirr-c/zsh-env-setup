@@ -1,6 +1,6 @@
 # -*- mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
 
-# Copyright (c) 2022 Wonwoo Choi
+# Copyright (c) 2022-2023 Wonwoo Choi
 
 # According to the Zsh Plugin Standard:
 # https://zdharma-continuum.github.io/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html
@@ -61,8 +61,14 @@ alias 니=ls
 alias ㅣㄴ=ls
 alias ㄴㅣ=ls
 
-if (( ${+commands[exa]} )); then
+if (( ${+commands[eza]} )); then
+    alias eza='eza --group-directories-first --color=always'
+    alias exa='eza'
+    alias ls='eza'
+    alias l='eza -lgab --time-style iso'
+elif (( ${+commands[exa]} )); then
     alias exa='exa --group-directories-first --color=always'
+    alias eza='exa'
     alias ls='exa'
     alias l='exa -lgab --time-style iso'
 else
