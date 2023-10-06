@@ -10,8 +10,13 @@
 
 # Then ${0:h} to get plugin's directory
 
-if [[ ${zsh_loaded_plugins[-1]} != */zsh-env-setup && -z ${fpath[(r)${0:h}]} ]] {
-    fpath+=( "${0:h}" )
+if [[ ${zsh_loaded_plugins[-1]} != */git-select-branch ]] {
+    if [[ -z ${path[(r)${0:h}]} ]]; then
+        path+=( "${0:h}" )
+    fi
+    if [[ -z ${fpath[(r)${0:h}]} ]]; then
+        fpath+=( "${0:h}" )
+    fi
 }
 
 # Standard hash for plugins, to not pollute the namespace

@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+# -*- mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+
+# Copyright (c) 2023 Wonwoo Choi
+
+# Set the base and typically useful options
+emulate -LR zsh
+setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
+
+local -a cmd
+if (( ${+commands[delta]} )); then
+    cmd=('delta')
+else
+    cmd=('less' '-S')
+    if [[ $1 == '--color-only' ]]; then
+        shift
+        cmd+=('-R')
+    fi
+fi
+
+exec $cmd $@
+
+# vim:ft=zsh:tw=80:sw=4:sts=4:et:foldmarker=[[[,]]]
