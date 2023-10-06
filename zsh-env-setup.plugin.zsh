@@ -89,6 +89,13 @@ elif (( ${+commands[vim]} )); then
     typeset -gx EDITOR=vim
     alias vi='vim'
 fi
+
+if (( ${+commands[delta]} && ${+commands[rg]} )); then
+    function _rg_delta() {
+        rg --json $@ | delta
+    }
+    alias rg='_rg_delta'
+fi
 # ]]]1
 
 # fzf [[[1
